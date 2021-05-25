@@ -11,8 +11,8 @@ class Core:
     image = ""
     sensibility = 0
 
-    def __init__(self, image, sensibility):
-        self.image = image
+    def __init__(self, sensibility):
+        self.image = self.abrir_archivo()
         self.sensibility = sensibility
 
     def procesare(self):
@@ -28,9 +28,9 @@ class Core:
         archivo_abierto = filedialog.askopenfilename(initialdir="/",
                                                      title="Seleccione archivo", filetypes=(("jpeg files", "*.jpg"),
                                                                                             ("all files", "*.*")))
-        print(archivo_abierto)
+        return cv2.imread(archivo_abierto)
 
-image = Core(cv2.imread("thumbs_up_down.jpg"), 2)
+image = Core(2)
 
 image.procesare()
 
