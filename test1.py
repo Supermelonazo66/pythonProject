@@ -1,6 +1,7 @@
 from tkinter import filedialog
 from tkinter import *
 import os
+import Core
 
 ventana = Tk()
 
@@ -27,6 +28,7 @@ def carpeta():
         os.chdir(directorio)
     print(os.getcwd())
 
+test1 = Core()
 
 Button(text="Abrir archivo", bg="pale green", command=abrir_archivo).place(x=10, y=10)
 Button(text="Guardar archivo", bg="light blue", command=guardar_archivo).place(x=10, y=40)

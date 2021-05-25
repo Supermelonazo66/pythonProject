@@ -1,7 +1,10 @@
+from tkinter import filedialog
+from tkinter import *
+import os
 import cv2
 import matplotlib.pyplot as plt
 
-
+ventana = Tk()
 
 class Core:
 
@@ -20,6 +23,12 @@ class Core:
         image_cont = cv2.drawContours(image, contours, -1, (0, 255, 0), 2)
         plt.imshow(image_cont)
         plt.show()
+
+    def abrir_archivo(self):
+        archivo_abierto = filedialog.askopenfilename(initialdir="/",
+                                                     title="Seleccione archivo", filetypes=(("jpeg files", "*.jpg"),
+                                                                                            ("all files", "*.*")))
+        print(archivo_abierto)
 
 image = Core(cv2.imread("thumbs_up_down.jpg"), 2)
 
