@@ -22,7 +22,7 @@ layout = [
 
 window = sg.Window("Image Viewer", layout)
 
-sensibilitate = 1
+sensibilitate = 0
 
 def procesare(sensibilitate):
     img = core(values["-FILE-"], sensibilitate)
@@ -32,8 +32,6 @@ def procesare(sensibilitate):
     bio = io.BytesIO()
     image.save(bio, format="PNG")
     window["-IMAGE-"].update(data=bio.getvalue())
-
-flag = 0
 
 while True:
     event, values = window.read()
