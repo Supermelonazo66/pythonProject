@@ -1,18 +1,14 @@
-from tkinter import filedialog
-from tkinter import *
-import os
 import cv2
 import matplotlib.pyplot as plt
 
-ventana = Tk()
 
-class Core:
+class core:
 
     image = ""
     sensibility = 0
 
-    def __init__(self, sensibility):
-        self.image = self.abrir_archivo()
+    def __init__(self, image, sensibility):
+        self.image = cv2.imread(image)
         self.sensibility = sensibility
 
     def procesare(self):
@@ -24,14 +20,11 @@ class Core:
         plt.imshow(image_cont)
         plt.show()
 
-    def abrir_archivo(self):
-        archivo_abierto = filedialog.askopenfilename(initialdir="/",
-                                                     title="Seleccione archivo", filetypes=(("jpeg files", "*.jpg"),
-                                                                                            ("all files", "*.*")))
-        return cv2.imread(archivo_abierto)
 
-image = Core(2)
 
-image.procesare()
+img = core("thumbs_up_down.jpg", 2)
+
+
+
 
 
