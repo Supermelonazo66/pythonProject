@@ -29,7 +29,7 @@ while True:
     event, values = window.read()
     if event == "OK" or event == sg.WIN_CLOSED:
         break
-    Img = core(values["-FILE-"], 250)
+    Img = core(values["-FILE-"], 225)
     Img.procesare()
 
 window.close()
