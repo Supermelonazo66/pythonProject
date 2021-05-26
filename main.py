@@ -8,6 +8,7 @@ image = cv2.imread("thumbs_up_down.jpg")
 
 # convert to RGB
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+cv2.imwrite("temp.jpg", image)
 # convert to grayscale
 gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
 

@@ -9,7 +9,6 @@ file_types = [("JPEG", "*.jpg"),
               ("All files", "*.*")]
 
 
-
 layout = [
     [sg.Image(key="-IMAGE-")],
     [
@@ -18,7 +17,9 @@ layout = [
          sg.FileBrowse(file_types=file_types),
          sg.Button("Load Image"),
     ],
+    [sg.Slider(range=(0, 100), size=(50, 10), orientation="h", key="-SLIDER-")]
 ]
+
 window = sg.Window("Image Viewer", layout)
 
 while True:
@@ -30,7 +31,6 @@ while True:
         if os.path.exists(filename):
             img = core(values["-FILE-"], 225)
             img.procesare()
-            img.dump()
             image = Image.open("temp.jpg")
             image.thumbnail((600, 600))
             bio = io.BytesIO()
