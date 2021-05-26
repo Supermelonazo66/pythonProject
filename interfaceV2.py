@@ -22,18 +22,30 @@ layout = [
 
 window = sg.Window("Image Viewer", layout)
 
+sensibilitate = 1
+
+def procesare(sensibilitate):
+    img = core(values["-FILE-"], sensibilitate)
+    img.procesare()
+    image = Image.open("temp.jpg")
+    image.thumbnail((600, 600))
+    bio = io.BytesIO()
+    image.save(bio, format="PNG")
+    window["-IMAGE-"].update(data=bio.getvalue())
+
+flag = 0
+
 while True:
     event, values = window.read()
     if event == "Exit" or event == sg.WIN_CLOSED:
             break
+
     if event == "Load Image":
         filename = values["-FILE-"]
         if os.path.exists(filename):
-            img = core(values["-FILE-"], 225)
-            img.procesare()
-            image = Image.open("temp.jpg")
-            image.thumbnail((600, 600))
-            bio = io.BytesIO()
-            image.save(bio, format="PNG")
-            window["-IMAGE-"].update(data=bio.getvalue())
+            procesare(sensibilitate)
+            if int(values["-SLIDER-"]) != sensibilitate:
+                sensibilitate = 2.25 * int(values["-SLIDER-"])
+                procesare(sensibilitate)
+
 window.close()
