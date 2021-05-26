@@ -15,12 +15,12 @@ layout = [
          sg.Text("Image File"),
          sg.Input(size=(25, 1), key="-FILE-"),
          sg.FileBrowse(file_types=file_types),
-         sg.Button("Load Image"),
+         sg.Button("Load Image")
     ],
     [sg.Slider(range=(0, 100), size=(50, 10), orientation="h", key="-SLIDER-")]
 ]
 
-window = sg.Window("Image Viewer", layout)
+window = sg.Window("Image Viewer", layout, grab_anywhere=True)
 
 sensibilitate = 0
 
@@ -32,6 +32,7 @@ def procesare(sensibilitate):
     bio = io.BytesIO()
     image.save(bio, format="PNG")
     window["-IMAGE-"].update(data=bio.getvalue())
+
 
 while True:
     event, values = window.read()
@@ -46,4 +47,7 @@ while True:
                 sensibilitate = 2.25 * int(values["-SLIDER-"])
                 procesare(sensibilitate)
 
+
+
+os.remove("temp.jpg")
 window.close()
