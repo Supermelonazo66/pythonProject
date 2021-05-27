@@ -17,7 +17,7 @@ layout = [
          sg.FileBrowse(file_types=file_types),
          sg.Button("Load Image")
     ],
-    [sg.Slider(range=(0, 100), size=(50, 10), orientation="h", key="-SLIDER-")]
+    [sg.Slider(range=(0, 100), size=(50, 10), orientation="h", key="-SLIDER-", default_value=100)]
 ]
 
 window = sg.Window("Contorous Image Detection - Python", layout)
