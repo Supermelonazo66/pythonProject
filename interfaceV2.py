@@ -20,7 +20,7 @@ layout = [
     [sg.Slider(range=(0, 100), size=(50, 10), orientation="h", key="-SLIDER-")]
 ]
 
-window = sg.Window("Image Viewer", layout, grab_anywhere=True)
+window = sg.Window("Contorous Image Detection - Python", layout)
 
 sensibilitate = 0
 
